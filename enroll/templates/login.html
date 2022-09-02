@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: #000;
+        font-size: 22px;
+    }
+    .f{
+        color: rgb(255, 255, 255);
+    }
+    .box{
+        background-color: rgb(152, 3, 189);
+        width:650px;
+        height: 300px;
+        margin: auto;
+        /* background: rgb(168, 32, 32); */
+        /* background-color: aliceblue; */
+        color: 4px;
+        padding:0px 32px;
+        margin-top: 160px;
+        border-radius: 22px;
+    }
+    input{
+        width: 300px;
+        height: 25px;
+        border-radius: 34px;
+        margin-left: 10px;
+        border:1px rgb(194, 187, 187) solid;
+        /* box-shadow:7px 7px 7px rgb(167, 163, 170);  */
+    }
+    button{
+        margin-bottom: 7px;
+        width: 120px;
+        color: white;
+        font-size: 22px;
+        border-color: black;
+        margin-top: 10px;
+        /* border-radius: 22px; */
+        height: 40px;
+    }
+    h1{
+        padding-top: 20px;
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        padding-bottom: 15px;
+    }
+    a{
+        width: 400px;
+        height: 40px;
+        text-decoration: none;
+        font-size: 22px;
+        /* border-radius: 20px; */
+        
+        padding: 10px;
+        background: rgb(184, 184, 184);
+    }
+</style>
+<body>
+    <div class="box">
+        <h1>LOGIN</h1>
+    <form action="" method="post" class="f">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p>{{error}}</p>
+        {% endfor %} {% endif %}
+
+        {% for fm in form%}
+        {{fm.label_tag}}
+        {{fm}} <br><br>
+        {{fm.errors|striptags}}
+        {% endfor %}
+        <!-- {{form.as_p}} -->
+    </form>
+    <a href="{% url 'signup' %}" type="submit">Signup</a>
+</div>
+</body>
+</html>

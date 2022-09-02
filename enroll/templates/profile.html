@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{name}}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p>{{error}}</p>
+        {% endfor %} {% endif %}
+
+        {% for fm in form%}
+        {{fm.label_tag}}{{fm}}<br>  <br>
+        {{fm.errors|striptags}}
+        {% endfor %}
+        <!-- {{form.as_p}} -->
+        <button type="submit" value="save">Save</button>
+    </form>
+    <a href="{% url 'logout' %}" type="submit">Logout</a>
+    <a href="{% url 'cpwd' %}" type="submit">Change Pwd</a>
+    <a href="{% url 'cpwd1' %}" type="submit">Change Pwd1</a>
+</body>
+</html>
